@@ -4,7 +4,7 @@ import LogoXSolar from '../../assets/Logo_XSolar.png'
 import InputBox from '../../components/InputBox';
 import CustomButton from '../../components/CustomButton';
 
-const Home: React.FC = () => {
+const Login: React.FC = () => {
   return(
 
       <Container>
@@ -17,8 +17,8 @@ const Home: React.FC = () => {
 
             <div className="container-inputs">
             <form>   
-              <InputBox label="Digite seu email" type="email"/>
-              <InputBox label="Digite sua senha" type="password" />
+              <InputBox label="Digite seu email" type="email" required={true}/>
+              <InputBox label="Digite sua senha" type="password" required={true} />
               <CustomButton value="Vamos lá!" />
             </form>
             </div>
@@ -32,4 +32,4 @@ const Home: React.FC = () => {
   );
 }
 
-export default Home;
+export default Login;

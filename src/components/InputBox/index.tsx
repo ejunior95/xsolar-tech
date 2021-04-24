@@ -1,21 +1,24 @@
-import { Container } from './styles';
+import { Container, Input, Label, Span } from './styles';
 
 interface IProps {
   label: string;
   type: string;
+  required: boolean;
 }
 
 const InputBox = (props:IProps) => {
   
   const {
     label,
-    type
+    type,
+    required
   } = props
   
   return(
       <Container>
-          <label>{label}</label><br />
-          <input type={type} required />
+          <Input type={type} required={required} />
+          <Label>{label}</Label>
+          <Span></Span>
       </Container>
   );
 }

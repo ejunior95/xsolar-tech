@@ -1,10 +1,10 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
 import Home from './pages/Home';
+import Login from './pages/Login';
 import Detalhes from './pages/Detalhes';
 
 function App() {
@@ -17,11 +17,13 @@ function App() {
           <Route path="/home">
             <Home />
           </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route exact path="/">
-            <Home />
+            <Login />
           </Route>
         </Switch>
-      
     </Router>
   );
 }

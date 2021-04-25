@@ -38,6 +38,7 @@ export const Input = styled.input`
       font-size: 18px;
       transition: .5s ease-in-out;
 
+
     &:focus ~ ${Span}:before {
       transform: scaleX(1);
       transform-origin: left;
@@ -50,6 +51,7 @@ export const Input = styled.input`
       transition: transform .5s ease-in-out;
     }
       
+    
 `;
 
 export const Label = styled.label`
@@ -60,10 +62,10 @@ export const Label = styled.label`
     pointer-events: none;
     display: block;
     transition: .3s ease-in-out;
-  ${Input}:focus + & {
+  ${Input}:focus ~ & {
     transform: translateY(-30px);
   }
-  ${Input}:valid + & {
+  ${Input}:valid ~ & {
     transform: translateY(-30px);
   }
   `;

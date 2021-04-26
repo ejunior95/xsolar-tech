@@ -1,4 +1,16 @@
-import express from 'express'
+import { ClientModel } from './models/ClientSchema';
+import express from 'express';
+import mongoose from 'mongoose';
+
+//Conexão com o banco
+const mongoDB = 'mongodb://127.0.0.1/x-solar-techBD';
+mongoose.connect(mongoDB, { useNewUrlParser: true });
+
+//Get the default connection
+const db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const server = express()
 server.use(express.json())
@@ -28,7 +40,8 @@ server.post('/login', (request, response) => {
 
 // Rotas do CRUD
 
-server.post('/clientes', (request, response) => {
+server.post('/clientes', async (request, response) => {
+   
     const {
         nome,
         cpf,
@@ -38,8 +51,18 @@ server.post('/clientes', (request, response) => {
         enderecosSecundarios
     } = request.body
 
-    
-   
+    const client = new ClientModel({
+        nome,
+        cpf,
+        telefone,
+        email,
+        enderecoPrincipal,
+        enderecosSecundarios
+    })
+   const clientCreated = await client.save()
+
+    return response.status(201).json(clientCreated)
+
 })
 
 

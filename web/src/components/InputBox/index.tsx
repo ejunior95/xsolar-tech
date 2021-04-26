@@ -16,7 +16,7 @@ const InputBox = (props:IProps) => {
   
   return(
       <Container>
-          <Input type={type} required={required} placeholder=" " />
+          <Input type={type} required={required} placeholder=" "/>
           <Label>{label}</Label>
           <Span></Span>
       </Container>

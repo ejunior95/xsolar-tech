@@ -3,8 +3,14 @@ import { Container } from './styles';
 import LogoXSolar from '../../assets/Logo_XSolar.png'
 import InputBox from '../../components/InputBox';
 import CustomButton from '../../components/CustomButton';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const Login: React.FC = () => {
+
+const [email, setPreenchido] = useState()
+
   return(
 
       <Container>
@@ -17,9 +23,11 @@ const Login: React.FC = () => {
 
             <div className="container-inputs">
             <form>   
-              <InputBox label="Digite seu email" type="email" required={true}/>
+              <InputBox label="Digite seu email" type="text" required={true}/>
               <InputBox label="Digite sua senha" type="password" required={true} />
+              <Link to="home">
               <CustomButton value="Vamos lá!" />
+              </Link>
             </form>
             </div>
 

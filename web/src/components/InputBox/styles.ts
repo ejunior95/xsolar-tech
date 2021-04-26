@@ -27,17 +27,19 @@ export const Span = styled.div`
     transform-origin: left;
     transition: transform .5s ease-in-out;
     } 
+
 `;
 
 export const Input = styled.input`
+    
     position: absolute;
-      width: 100%;
-      background-color: transparent;
-      border: none;
-      box-shadow: none;
-      font-size: 18px;
-      transition: .5s ease-in-out;
-
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    font-size: 18px;
+    transition: .5s ease-in-out;
+    
 
     &:focus ~ ${Span}:before {
       transform: scaleX(1);
@@ -49,15 +51,12 @@ export const Input = styled.input`
       transform: scaleX(1);
       transform-origin: left;
       transition: transform .5s ease-in-out;
-    }
-      
+    } 
     
 `;
 
 export const Label = styled.label`
     position: absolute;
-    top: 0;
-    left: 0;
     color: #555;
     pointer-events: none;
     display: block;
@@ -68,5 +67,6 @@ export const Label = styled.label`
   ${Input}:valid ~ & {
     transform: translateY(-30px);
   }
+
   `;
 

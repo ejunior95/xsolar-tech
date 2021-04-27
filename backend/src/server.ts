@@ -40,6 +40,8 @@ server.post('/login', (request, response) => {
 
 // Rotas do CRUD
 
+//Rota de cadastro
+
 server.post('/clientes', async (request, response) => {
    
     const {
@@ -64,6 +66,42 @@ server.post('/clientes', async (request, response) => {
     return response.status(201).json(clientCreated)
 
 })
+
+//Rota de listar
+
+server.get('/clientes', async (request, response) => {
+    
+    const clients = await ClientModel.find({})
+
+    return response.json(clients)
+})
+
+//Rota de listar apenas um cliente
+
+server.get('/clientes/:_id', async (request, response) => {
+    
+    const {
+        _id
+    } = request.params
+
+    const clients = await ClientModel.findOne({_id})
+
+    return response.json(clients)
+})
+
+//Rota de deletar um cliente
+
+server.delete('/clientes/:_id', async (request, response) => {
+    
+    const {
+        _id
+    } = request.params
+
+    await ClientModel.deleteOne({_id})
+
+    return response.status(204).json({})
+})
+
 
 
 server.listen(3333, () => {

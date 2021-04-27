@@ -9,3 +9,8 @@ services:
       - 27017:27017
       - 27018:27018
       - 27019:27019
+    volumes:
+      - mongo:/data/db/
+
+volumes:
+  mongo:

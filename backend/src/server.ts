@@ -84,9 +84,9 @@ server.get('/clientes/:_id', async (request, response) => {
         _id
     } = request.params
 
-    const clients = await ClientModel.findOne({_id})
+    const client = await ClientModel.findOne({_id})
 
-    return response.json(clients)
+    return response.json(client)
 })
 
 //Rota de deletar um cliente
@@ -102,7 +102,33 @@ server.delete('/clientes/:_id', async (request, response) => {
     return response.status(204).json({})
 })
 
+server.put('/clientes/:_id', async (request, response) => {
+    
+    const {
+        _id
+    } = request.params
 
+    const {
+        nome,
+        cpf,
+        telefone,
+        email,
+        enderecoPrincipal,
+        enderecosSecundarios
+    } = request.body
+    
+
+    const client = await ClientModel.findOneAndUpdate({_id}, {$set:{
+        nome,
+        cpf,
+        telefone,
+        email,
+        enderecoPrincipal,
+        enderecosSecundarios
+    }}, {new: true})
+
+    return response.json(client)
+})
 
 server.listen(3333, () => {
    console.log('O servidor esta rodando na porta 3333')

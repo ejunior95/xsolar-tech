@@ -1,0 +1,11 @@
+{
+  "name": "xsolar-tech",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ejunior95/xsolar-tech.git",
+  "author": "ejunior95 <e.junior95@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev:all": "npx concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\"" 
+  } 
+}

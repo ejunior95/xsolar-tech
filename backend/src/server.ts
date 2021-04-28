@@ -1,6 +1,11 @@
 import { ClientModel } from './models/ClientSchema';
 import express from 'express';
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 //Conexão com o banco
 const mongoDB = 'mongodb://127.0.0.1/x-solar-techBD';
@@ -18,24 +23,60 @@ server.get('/', (request, response) => {
     return response.json({ok: true})
 })
 
-
 // Rotas autenticadas
 
-server.post('/login', (request, response) => {
+server.post('/auth/login', async (request, response) => {
     const {
-        login,
+        email,
         senha
     } = request.body
 
-    if (senha !== "1234" || login !== "admin") {
-        return response.status(401).json({
-            message: "Login ou senha inválida!"
-        })
+    const client = await ClientModel.findOne({email})
+    if (!client) {
+        return response.status(404).json({message: "Usuário não encontrado!"})
     }
+    
+    try {
+        const validaSenha = await bcrypt.compare(senha, client.senha);
+        if (!validaSenha || !client.senha) {
+            return response.status(401).json()
+        }
+    } catch (error) {
+        return response.status(401).json()
+    }
+
+    const jwt_secret = process.env.JWT_SECRET
+
+    if (!jwt_secret) return response.status(500).json()
+    const token = jwt.sign({ client_id: client._id }, jwt_secret , {
+        expiresIn: "1d",
+     });
+
     return response.status(200).json({
         message: "Acesso autorizado!",
-        token: "Berer 102030dsadsalkkoekopqw913892132145dsa564d56sa421921"
+        token
     })
+})
+
+server.post('/auth/register', async (request, response) => {
+    const {
+        email,
+        senha
+    } = request.body
+
+    const client = await ClientModel.findOne({email})
+    if (!client) {
+        return response.status(404).json({message: "Usuário não encontrado!"})
+    }
+
+    const hash = await bcrypt.hash(senha, 7);
+    
+    client.senha = hash
+
+    await client.save()
+    return response.status(201).json({})
+
+
 })
 
 // Rotas do CRUD
@@ -101,6 +142,8 @@ server.delete('/clientes/:_id', async (request, response) => {
 
     return response.status(204).json({})
 })
+
+//Rotas de alteração
 
 server.put('/clientes/:_id', async (request, response) => {
     

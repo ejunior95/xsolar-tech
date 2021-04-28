@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+
 // Define schema
 const Schema = mongoose.Schema;
 
@@ -19,8 +20,9 @@ const ClientModelSchema = new Schema({
     cpf: String,
     telefone: String,
     email: String,
+    senha: String,
     enderecoPrincipal: EnderecoSchema,
-    enderecosSecundarios: [EnderecoSchema]
+    enderecosSecundarios: [EnderecoSchema],
 });
 
 // Compile model from schema

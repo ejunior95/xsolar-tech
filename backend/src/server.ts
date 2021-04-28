@@ -1,4 +1,5 @@
 import { ClientModel } from './models/ClientSchema';
+import authGerente from './middlewares/GerenteAutenticacao';
 import express from 'express';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
@@ -9,7 +10,7 @@ dotenv.config();
 
 //Conexão com o banco
 const mongoDB = 'mongodb://127.0.0.1/x-solar-techBD';
-mongoose.connect(mongoDB, { useNewUrlParser: true });
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true  });
 
 //Get the default connection
 const db = mongoose.connection;
@@ -19,9 +20,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const server = express()
 server.use(express.json())
-server.get('/', (request, response) => {
-    return response.json({ok: true})
-})
+
+
 
 // Rotas autenticadas
 
@@ -58,6 +58,7 @@ server.post('/auth/login', async (request, response) => {
     })
 })
 
+server.use(authGerente)
 server.post('/auth/register', async (request, response) => {
     const {
         email,

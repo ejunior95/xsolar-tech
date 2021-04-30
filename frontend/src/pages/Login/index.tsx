@@ -1,23 +1,36 @@
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, useContext, ChangeEvent } from 'react';
 import { Container } from './styles';
 import LogoXSolar from '../../assets/Logo_XSolar.png'
 import InputBox from '../../components/InputBox';
 import CustomButton from '../../components/CustomButton';
 import { Link } from 'react-router-dom';
+import { GerenteContext } from '../../context/GerenteContext';
 
 
 const Login: React.FC = () => {
+  
+  const [email, setEmail] = useState('')
+  const [senha, setSenha] = useState('')
 
-const [email, setEmail] = useState('')
-const [senha, setSenha] = useState('')
+  const { validarLogin } = useContext(GerenteContext);
+  
+  function atualizaEmail(e:ChangeEvent<HTMLInputElement>) {
+    setEmail(e.target.value)
+  }
+  function atualizaSenha(e:ChangeEvent<HTMLInputElement>) {
+    setSenha(e.target.value)
+  }
 
-function atualizaEmail(e:ChangeEvent<HTMLInputElement>) {
-  setEmail(e.target.value)
-}
-function atualizaSenha(e:ChangeEvent<HTMLInputElement>) {
-  setSenha(e.target.value)
-}
+  function handledSubmit(e:React.FormEvent<HTMLFormElement>) {
+    console.log({email, senha})
+    e.preventDefault()
+    validarLogin(email, senha)
+    setEmail('')  
+    setSenha('')
 
+  }
+  
+  
   return(
 
       <Container>
@@ -29,14 +42,12 @@ function atualizaSenha(e:ChangeEvent<HTMLInputElement>) {
             </div>
 
             <div className="container-inputs">
-            <form>   
-              <InputBox label="Digite seu email" type="text" required={true} onChange={atualizaEmail}/>
-              <InputBox label="Digite sua senha" type="password" required={true} onChange={atualizaSenha} />
+            <form onSubmit={handledSubmit} >   
+              <InputBox label="Digite seu email" type="text" required onChange={atualizaEmail} value={email}/>
+              <InputBox label="Digite sua senha" type="password" required onChange={atualizaSenha} value={senha} />
           
-              {/* <Link to="home"> */}
               <CustomButton value="Vamos lá!" />
-              {/* </Link> */}
-          
+            
             </form>
             </div>
 

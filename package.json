@@ -6,6 +6,6 @@
   "author": "ejunior95 <e.junior95@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev:all": "npx concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\"" 
-  } 
+    "dev:all": "npx concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\""
+  }
 }

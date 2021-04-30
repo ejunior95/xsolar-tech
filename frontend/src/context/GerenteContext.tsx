@@ -42,12 +42,11 @@ export function GerenteProvider({
     async function validarLogin(email:string, senha:string) {
         let res
         try {
-           res = await api.get<IResponseLogin>('auth/login')
+           res = await api.post<IResponseLogin>('auth/login', {email, senha})
            localStorage.setItem('@SistemaXSolarTech/token', res.data.token)
            setToken(res.data.token)
           } catch (error) {
-            showToastMessage('erro',"Erro na comunicação com o servidor!")
-            //<ToastMessage type={'erro'} text={"Não foi possível realizar o login!"} />
+            showToastMessage('erro',"Não foi possível realizar o login!")
             return 
           }
           

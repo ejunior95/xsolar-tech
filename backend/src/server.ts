@@ -4,6 +4,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import cors from 'cors';
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -21,6 +22,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const server = express()
 server.use(express.json())
 
+server.use(cors())
 
 
 // Rotas autenticadas
@@ -30,6 +32,8 @@ server.post('/auth/login', async (request, response) => {
         email,
         senha
     } = request.body
+
+    console.log(request.body)
 
     const client = await ClientModel.findOne({email})
     if (!client) {

@@ -11,7 +11,7 @@ export const Span = styled.div`
     bottom: 0;
     right: 0;
     display: block;
-    background: #dcdde1;
+    background: #000000;
     width: 100%;
     height: 2px;
 
@@ -57,15 +57,19 @@ export const Input = styled.input`
 
 export const Label = styled.label`
     position: absolute;
-    color: #555;
+    color: #000000;
     pointer-events: none;
     display: block;
     transition: .3s ease-in-out;
   ${Input}:focus ~ & {
     transform: translateY(-30px);
+    color: #3C62B1;
+    font-size: 12px;
   }
   ${Input}:valid ~ & {
     transform: translateY(-30px);
+    color: #3C62B1;
+    font-size: 12px;
   }
 
   `;

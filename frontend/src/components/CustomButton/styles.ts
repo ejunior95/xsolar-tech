@@ -16,7 +16,8 @@ export const Container = styled.div`
       font-weight: 700;
   }
   input:hover {
-      background-color: transparent;
-      color: #3C62B1
+      background-color: rgba(255,255,255,0.5);
+      color: #3C62B1;
+      border: 2px solid #3C62B1;
   }
 `;

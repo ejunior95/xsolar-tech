@@ -9,4 +9,5 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: .5s ease-in-out;
 }

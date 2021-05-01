@@ -3,9 +3,9 @@ import { Container } from './styles';
 import LogoXSolar from '../../assets/Logo_XSolar.png'
 import InputBox from '../../components/InputBox';
 import CustomButton from '../../components/CustomButton';
-import { Link } from 'react-router-dom';
 import BgVideo from '../../assets/bg-video.mp4';
 import { GerenteContext } from '../../context/GerenteContext';
+import { Link } from 'react-router-dom';  
 
 const Login: React.FC = () => {
   

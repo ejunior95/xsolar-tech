@@ -1,16 +1,31 @@
 import styled from 'styled-components';
 
+
 export const Container = styled.div`
     height: 100vh;
-    background: #7474BF;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #348AC7, #7474BF);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #348AC7, #7474BF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    overflow: hidden;
+    overflow: -moz-scrollbars-vertical;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+
+    video {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: absolute;
+    background-position: fixed;
+    pointer-events: none;
+    background-repeat: repeat;
+    object-fit: fill;
+  }
 
     .container-login {
-        width: 50vw;
+        width: 40vw;
         height: 80vh;
         background-color: #ffffff;
         border-radius: 10px;

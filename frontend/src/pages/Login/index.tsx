@@ -4,8 +4,8 @@ import LogoXSolar from '../../assets/Logo_XSolar.png'
 import InputBox from '../../components/InputBox';
 import CustomButton from '../../components/CustomButton';
 import { Link } from 'react-router-dom';
+import BgVideo from '../../assets/bg-video.mp4';
 import { GerenteContext } from '../../context/GerenteContext';
-
 
 const Login: React.FC = () => {
   
@@ -34,7 +34,7 @@ const Login: React.FC = () => {
   return(
 
       <Container>
-
+          <video src={BgVideo} autoPlay loop muted />
           <div className="container-login">
             <div className="container-textos">
               <h1 className="titulo">Olá, seja bem-vindo!</h1><br />

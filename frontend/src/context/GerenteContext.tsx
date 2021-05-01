@@ -23,7 +23,7 @@ export const GerenteContext = createContext({} as IContextData);
 export function GerenteProvider({
     children
   }: IProviderProps) {
-    const [token, setToken] = useState('')
+  const [token, setToken] = useState('')
   const { showToastMessage } = useContext(ToastContext);
 
   useEffect(() => {
@@ -49,7 +49,6 @@ export function GerenteProvider({
             showToastMessage('erro',"Não foi possível realizar o login!")
             return 
           }
-          
       }
       function encerrarSessao() {
         localStorage.removeItem('@SistemaXSolarTech/token')

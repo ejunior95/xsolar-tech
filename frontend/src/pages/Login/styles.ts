@@ -27,7 +27,7 @@ export const Container = styled.div`
     .container-login {
         width: 40vw;
         height: 80vh;
-        background-color: rgba(255,255,255,0.6);
+        background-color: rgba(255,255,255,0.4);
         border-radius: 10px;
         -webkit-box-shadow: 2px 2px 5px 6px rgba(0,0,0,0.1);  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
         -moz-box-shadow: 2px 2px 5px 6px rgba(0,0,0,0.1);  /* Firefox 3.5 - 3.6 */

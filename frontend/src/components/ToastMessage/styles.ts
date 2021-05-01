@@ -37,7 +37,7 @@ export const Container = styled.div`
   }
   .icone {
     color: #ffffff;
-    font-size: 30px;
+    font-size: 40px;
     padding-left: 10px;
     opacity: 0.7;
   }
@@ -79,7 +79,7 @@ h1 {
 }
 .icone {
   color: #ffffff;
-  font-size: 33px;
+  font-size: 60px;
   padding-left: 20px;
   opacity: 0.7;
 }

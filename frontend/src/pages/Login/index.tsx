@@ -5,7 +5,6 @@ import InputBox from '../../components/InputBox';
 import CustomButton from '../../components/CustomButton';
 import BgVideo from '../../assets/bg-video.mp4';
 import { GerenteContext } from '../../context/GerenteContext';
-import { Link } from 'react-router-dom';  
 
 const Login: React.FC = () => {
   
@@ -22,12 +21,10 @@ const Login: React.FC = () => {
   }
 
   function handledSubmit(e:React.FormEvent<HTMLFormElement>) {
-    console.log({email, senha})
     e.preventDefault()
     validarLogin(email, senha)
     setEmail('')  
     setSenha('')
-
   }
   
   
@@ -43,8 +40,8 @@ const Login: React.FC = () => {
 
             <div className="container-inputs">
             <form onSubmit={handledSubmit} >   
-              <InputBox label="Digite seu email" type="text" required onChange={atualizaEmail} value={email}/>
-              <InputBox label="Digite sua senha" type="password" required onChange={atualizaSenha} value={senha} />
+              <InputBox label="Digite seu email" type="text" onChange={atualizaEmail} value={email} required />
+              <InputBox label="Digite sua senha" type="password" onChange={atualizaSenha} value={senha} required />
           
               <CustomButton value="Vamos lá!" />
             

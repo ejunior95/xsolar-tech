@@ -5,16 +5,29 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Detalhes from './pages/Detalhes';
+import CadastrarAlterar from '../src/pages/CadastrarAlterar';
+import Listar from '../src/pages/Listar';
+import NavBar from '../src/components/NavBar';
 
 function App() {
+
   return (
     <Router>
         <Switch>
-          <Route path="/details">
-            <Detalhes />
+          <Route path="/cadastrar-cliente">
+            <NavBar />
+            <CadastrarAlterar />
+          </Route>
+          <Route path="/alterar-cliente">
+          <NavBar />
+            <CadastrarAlterar />
+          </Route>
+          <Route path="/listar">
+          <NavBar />
+            <Listar />
           </Route>
           <Route path="/home">
+          <NavBar />
             <Home />
           </Route>
           <Route path="/login">

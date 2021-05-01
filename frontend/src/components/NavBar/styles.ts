@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -18,18 +18,23 @@ export const Container = styled.div`
   }
 
   .container-itens-menu {
-    width: 60vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 80vw;
   }
 
   .container-itens-menu ul {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end;
+    padding-right: 1vw;
     color: #ffffff;
   }
 
   .container-itens-menu ul li {
     font-size: 1rem;
+    margin-left: 1vw;
     list-style: none;
     padding: 8px;
     cursor: pointer;

@@ -16,7 +16,7 @@ export const Container = styled.div`
       font-weight: 700;
   }
   input:hover {
-      background-color: #ffffff;
-      color: #3C62B1;
+      background-color: transparent;
+      color: #3C62B1
   }
 `;

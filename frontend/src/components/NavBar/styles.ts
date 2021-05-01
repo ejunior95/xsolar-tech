@@ -6,7 +6,7 @@ export const Container = styled.header`
   left: 0;
   width: 100%;
   height: 12vh;
-  background-color: #0C29F2;
+  background-color: #40739e;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -40,11 +40,11 @@ export const Container = styled.header`
     cursor: pointer;
     border-radius: 5px;
     transition: .2s ease-in-out;
-    border: 1px solid #0C29F2;
+    border: 1px solid #40739e;
   }
 
   .container-itens-menu ul li:hover {
-    background-color: #0D69FC;
+    background-color: #487eb0;
     border: 1px solid #ffffff;
     transition: .2s ease-in-out;
   }

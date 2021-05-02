@@ -6,8 +6,6 @@ const Home: React.FC = () => {
 
       <Container>
         
-      
-
       </Container>
   );
 }

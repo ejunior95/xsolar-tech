@@ -61,7 +61,16 @@ export const Container = styled.header`
     a {
     color: #ffffff;
     }
+  }
 
+  .container-itens-menu ul li.active {
+    background-color: #2f3640;
+    color: #ffffff;
+    border: 1px solid #7f8fa6;
+    transition: .2s ease-in-out;
+    a {
+      color: #ffffff;
+    }
   }
 
 `;

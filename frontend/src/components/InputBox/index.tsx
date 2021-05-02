@@ -5,8 +5,8 @@ interface IProps {
   label: string;
   type: string;
   required: boolean;
-  value: string;
-  onChange: (e:ChangeEvent<HTMLInputElement>) => void
+  value?: string;
+  onChange?: (e:ChangeEvent<HTMLInputElement>) => void
 }
 
 const InputBox = (props:IProps) => {

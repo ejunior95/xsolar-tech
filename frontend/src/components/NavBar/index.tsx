@@ -44,8 +44,6 @@ const NavBar: React.FC = () => {
             <ul>
                 <li><Link to="/home">Página Inicial</Link></li>
                 <li><Link to="/cadastrar-cliente">Cadastrar novo cliente</Link></li>
-                <li><Link to="/alterar-cliente">Alterar cadastros</Link></li>
-                <li><Link to="/listar">Excluir cadastros</Link></li>
                 <li><Link to="/listar">Listar todos os cadastros</Link></li>
                 <li onClick={toggleModal}>Encerrar sessão</li>
             </ul>   

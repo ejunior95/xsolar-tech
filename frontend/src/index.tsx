@@ -8,13 +8,12 @@ import { ToastProvider } from './context/ToastContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle>
+    <GlobalStyle />
     <ToastProvider>
       <GerenteProvider>
         <App />
       </GerenteProvider>
     </ToastProvider>
-    </GlobalStyle>
   </React.StrictMode>,
   document.getElementById('root')
 );

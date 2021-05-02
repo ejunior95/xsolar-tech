@@ -12,8 +12,6 @@ import { GerenteContext } from "./context/GerenteContext";
 import { useContext } from "react";
 import NotFound from "./pages/NotFound";
 
-
-
 function App() {
 
   const {

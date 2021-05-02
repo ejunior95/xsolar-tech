@@ -38,7 +38,9 @@ const Login: React.FC = () => {
             </div>
 
             <div className="container-inputs">
+
             <form onSubmit={handledSubmit} >   
+              
               <InputBox label="Digite seu email" type="text" onChange={atualizaEmail} value={email} required />
               <InputBox label="Digite sua senha" type="password" onChange={atualizaSenha} value={senha} required />
           

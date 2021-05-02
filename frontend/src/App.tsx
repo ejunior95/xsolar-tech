@@ -8,13 +8,36 @@ import Login from './pages/Login';
 import CadastrarAlterar from '../src/pages/CadastrarAlterar';
 import Listar from '../src/pages/Listar';
 import NavBar from '../src/components/NavBar';
+import { GerenteContext } from "./context/GerenteContext";
+import { useContext } from "react";
+import NotFound from "./pages/NotFound";
+
+
 
 function App() {
 
+  const {
+    isLogado
+  } = useContext(GerenteContext)
+
   return (
-    <Router>
-        <Switch>
-          <Route path="/cadastrar-cliente">
+    <Router> 
+    {!isLogado ? (
+      <Switch>
+      <Route path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/">
+          <Login />
+        </Route>
+        <Route path="/">
+          <NotFound />
+        </Route>
+      </Switch>
+      ) : (
+       <Switch>
+
+       <Route path="/cadastrar-cliente">
             <NavBar />
             <CadastrarAlterar />
           </Route>
@@ -30,13 +53,11 @@ function App() {
           <NavBar />
             <Home />
           </Route>
-          <Route path="/login">
-            <Login />
+          <Route path="/">
+            <NotFound />
           </Route>
-          <Route exact path="/">
-            <Login />
-          </Route>
-        </Switch>
+          </Switch>
+        )}
     </Router>
   );
 }

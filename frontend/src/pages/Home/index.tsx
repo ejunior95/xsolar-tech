@@ -6,21 +6,7 @@ const Home: React.FC = () => {
 
       <Container>
         
-        <div className="container-cards">
-            
-            <div className="item1">
-              
-            </div>
-
-            <div className="item2">
-            
-            </div>
-
-            <div className="item3">
-
-            </div>
-
-        </div>
+      
 
       </Container>
   );

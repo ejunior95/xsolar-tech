@@ -3,8 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   width: 100%;
   input {
-      background-color: #3C62B1;
-      border: 2px solid #3C62B1;
+      background-color: #013399;
+      border: 2px solid #013399;
       color: #ffffff;
       font-size: 18px;
       width: 100%;
@@ -17,7 +17,6 @@ export const Container = styled.div`
   }
   input:hover {
       background-color: rgba(255,255,255,0.5);
-      color: #3C62B1;
-      border: 2px solid #3C62B1;
+      color: #013399;
   }
 `;

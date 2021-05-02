@@ -7,5 +7,6 @@
   "license": "MIT",
   "scripts": {
     "dev:all": "npx concurrently \"cd backend && yarn dev\" \"cd frontend && yarn dev\""
-  }
+  },
+  "dependencies": {}
 }

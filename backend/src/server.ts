@@ -33,8 +33,6 @@ server.post('/auth/login', async (request, response) => {
         senha
     } = request.body
 
-    console.log(request.body)
-
     const client = await ClientModel.findOne({email})
     if (!client) {
         return response.status(404).json({message: "Usuário não encontrado!"})
@@ -80,7 +78,6 @@ server.post('/auth/register', async (request, response) => {
 
     await client.save()
     return response.status(201).json({})
-
 
 })
 

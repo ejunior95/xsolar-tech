@@ -24,6 +24,7 @@ function App() {
     <Router> 
     {!isLogado ? (
       <Switch>
+
       <Route path="/login">
           <Login />
         </Route>
@@ -33,11 +34,12 @@ function App() {
         <Route path="/">
           <NotFound />
         </Route>
+
       </Switch>
       ) : (
        <Switch>
 
-       <Route path="/cadastrar-cliente">
+          <Route path="/cadastrar-cliente">
             <NavBar />
             <CadastrarAlterar />
           </Route>
@@ -56,6 +58,7 @@ function App() {
           <Route path="/">
             <NotFound />
           </Route>
+
           </Switch>
         )}
     </Router>

@@ -49,4 +49,9 @@ export const Container = styled.header`
     transition: .2s ease-in-out;
   }
 
+  a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
 `;

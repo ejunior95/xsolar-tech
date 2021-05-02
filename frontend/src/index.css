@@ -11,3 +11,7 @@
   -moz-osx-font-smoothing: grayscale;
   transition: .5s ease-in-out;
 }
+
+body {
+  background-color: #F2F2F2;
+}

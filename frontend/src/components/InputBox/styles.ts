@@ -22,7 +22,7 @@ export const Span = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: #3C62B1;
+    background: #013399;
     transform: scaleX(0);
     transform-origin: left;
     transition: transform .5s ease-in-out;
@@ -63,12 +63,12 @@ export const Label = styled.label`
     transition: .3s ease-in-out;
   ${Input}:focus ~ & {
     transform: translateY(-30px);
-    color: #3C62B1;
+    color: #013399;
     font-size: 12px;
   }
   ${Input}:valid ~ & {
     transform: translateY(-30px);
-    color: #3C62B1;
+    color: #013399;
     font-size: 12px;
   }
 

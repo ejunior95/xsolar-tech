@@ -44,7 +44,7 @@ const Login: React.FC = () => {
               <InputBox label="Digite seu email" type="text" onChange={atualizaEmail} value={email} required />
               <InputBox label="Digite sua senha" type="password" onChange={atualizaSenha} value={senha} required />
           
-              <CustomButton value="Vamos lá!" />
+              <CustomButton value="Vamos lá!" className="btn-login"/>
             
             </form>
             </div>

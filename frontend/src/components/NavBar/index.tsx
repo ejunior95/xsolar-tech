@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Container } from './styles';
-import LogoXSolar from '../../assets/Logo_XSolar_ALT2.png';
+import LogoXSolar from '../../assets/Logo_XSolar.png';
 import { GerenteContext } from '../../context/GerenteContext';
 import ModalMessage from '../ModalMessage';
 import { Link } from 'react-router-dom';

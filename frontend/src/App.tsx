@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Login from './pages/Login';
-import CadastrarAlterar from '../src/pages/CadastrarAlterar';
+import Cadastrar from './pages/Cadastrar';
 import Listar from '../src/pages/Listar';
 import NavBar from '../src/components/NavBar';
 import { GerenteContext } from "./context/GerenteContext";
@@ -41,11 +41,7 @@ function App() {
 
           <Route path="/cadastrar-cliente">
             <NavBar />
-            <CadastrarAlterar />
-          </Route>
-          <Route path="/alterar-cliente">
-          <NavBar />
-            <CadastrarAlterar />
+            <Cadastrar />
           </Route>
           <Route path="/listar">
           <NavBar />

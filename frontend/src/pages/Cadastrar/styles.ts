@@ -33,11 +33,27 @@ export const Container = styled.div`
         width: 30%;
     }
 
+    .titulo-endereco {
+        padding-top: 3vh;
+        padding-left: 7vw;
+        padding-bottom: 1vh;
+    }
+
     .container-endereco {
         width: 100%;
-        background-color: #718093;
+        background-color: #dcdde1;
         border-radius: 8px;
-        color: #ffffff;
+        padding-bottom: 10vh;
+    }
+
+    .container-conteudo-endereco {
+        width: 80%;
+        height: 80vh;
+        margin-left: 7vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
     }
 
 `;

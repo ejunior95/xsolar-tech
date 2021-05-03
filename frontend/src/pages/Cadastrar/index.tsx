@@ -14,8 +14,10 @@ const Cadastro: React.FC = () => {
               <InputBox label="Telefone" type="phone" required/>
               <InputBox label="Email" type="text" required/> 
               </div>
+              
               <div className="container-endereco">
-                <h2>Endereço principal</h2>
+                <h1 className="titulo-endereco">Endereço principal</h1>
+                <div className="container-conteudo-endereco">
                 <InputBox label="CEP" type="text" required/> 
                 <InputBox label="Cidade" type="text" required/> 
                 <InputBox label="Estado" type="text" required/> 
@@ -24,8 +26,9 @@ const Cadastro: React.FC = () => {
                 <InputBox label="Número" type="text" required/> 
                 <InputBox label="Complemento" type="text" required/> 
                 <InputBox label="Tipo" type="text" required/> 
-
+                </div>
               </div>
+
               <div className="container-buttons">
                   <div className="btn-salvar">
                   <CustomButton value="Salvar" className="btn-form disabled"/>

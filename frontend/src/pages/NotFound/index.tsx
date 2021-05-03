@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { GerenteContext } from '../../context/GerenteContext';
 import { Container } from './styles';
+import Loader from '../../assets/loader.gif';
 
 const NotFound: React.FC = () => {
   
-  const location = useLocation()
   const history= useHistory()
 
   const {isLogado} = useContext(GerenteContext)
@@ -23,7 +23,7 @@ const NotFound: React.FC = () => {
   return(
     
       <Container>
-        <h1>{isLogado.toString()}</h1>
+        <img src={Loader} alt="Carregando..." />
       </Container>
   );
 }

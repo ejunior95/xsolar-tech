@@ -7,7 +7,7 @@ const Cadastro: React.FC = () => {
   return(
       <Container>
           <form>
-              <h1>Informe abaixo as informações do cliente</h1> <br/>
+              <h1>Informe abaixo as informações do cliente</h1>
               <div className="container-inputs">
               <InputBox label="Nome completo" type="text" required/>
               <InputBox label="CPF" type="text" required/> 

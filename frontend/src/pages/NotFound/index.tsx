@@ -23,7 +23,7 @@ const NotFound: React.FC = () => {
   return(
     
       <Container>
-        <img src={Loader} alt="Carregando..." />
+        <h1>Carregando...</h1>
       </Container>
   );
 }

@@ -34,7 +34,7 @@ export const Container = styled.div`
       font-weight: 700;
   }
   
-  .btn-form.disabled {
+  .btn-form:disabled {
       background-color: #dcdde1;
       border: 2px solid #7f8fa6;
       color: #7f8fa6;

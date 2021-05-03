@@ -7,7 +7,7 @@ export const Container = styled.div`
   place-items: center;
   padding-top: 10vh;
   .container-conteudo {
-    width: 80%;
+    width: 70%;
   }
 
 `;

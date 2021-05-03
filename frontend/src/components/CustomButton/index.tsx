@@ -3,19 +3,21 @@ import { Container } from './styles';
 
 interface IProps {
   value: string;
-  className: string
+  className: string;
+  disabled?: boolean;
 }
 
 const CustomButton = (props:IProps) => {
 
   const {
     value,
-    className
+    className, 
+    disabled = false
   } = props
 
   return(
       <Container>
-          <input type="submit" value={value} className={className} />
+          <input type="submit" value={value} className={className} disabled={disabled} />
       </Container>
   );
 }

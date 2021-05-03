@@ -31,7 +31,7 @@ const Cadastro: React.FC = () => {
 
               <div className="container-buttons">
                   <div className="btn-salvar">
-                  <CustomButton value="Salvar" className="btn-form disabled"/>
+                  <CustomButton value="Salvar" className="btn-form" disabled/>
                   </div>
               </div>
           </form>

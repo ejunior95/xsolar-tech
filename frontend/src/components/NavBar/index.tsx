@@ -4,7 +4,8 @@ import LogoXSolar from '../../assets/Logo_XSolar.png';
 import { GerenteContext } from '../../context/GerenteContext';
 import ModalMessage from '../ModalMessage';
 import { Link, useLocation } from 'react-router-dom';
-
+import { VscChromeClose } from "react-icons/vsc";
+import { MdExitToApp } from 'react-icons/md'
 
 const NavBar: React.FC = () => {
   
@@ -32,11 +33,12 @@ const NavBar: React.FC = () => {
         title="Atenção!" 
         subtitle="Tem certeza que deseja sair do sistema?" 
         >
+          <button className="btn-sucesso" onClick={toggleModal}>
+          <VscChromeClose /> Não, quero continuar logado</button> 
           <button 
-          className="btn-sucesso" onClick={logoff}>
+          className="btn-cancelar" onClick={logoff}>
+           <MdExitToApp />
             Sim, por favor</button> 
-          <button className="btn-cancelar" onClick={toggleModal}>
-            Não, quero continuar logado</button> 
         </ModalMessage> 
         }
 

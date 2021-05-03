@@ -11,10 +11,31 @@ export const Container = styled.div`
   .card-cliente {
       background-color: #353b48;
       height: 90%;
-      width: 90%;
-      margin-left: 5%;
+      width: 95%;
+      
+      margin-left: 2.5%;
       margin-top: 2.5%;
+      padding-bottom: 2.5%;
       border-radius: 10px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;      
   }
 
+  .titulos {
+    color: #dcdde1;
+    font-size: 50px;
+    width: 90%;
+  }
+
+  .subtitulos {
+    color: #ffffff;
+    width: 90%;
+  }
+
+  strong { 
+    color: #7f8fa6;
+    }
 `;

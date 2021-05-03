@@ -21,8 +21,8 @@ export const Container = styled.div`
   }
 
   .btn-form {
-      background-color: #058D1D;
-      border: 2px solid #058D1D;
+      background-color: #00a8ff;
+      border: 2px solid #00a8ff;
       color: #ffffff;
       font-size: 18px;
       width: 100%;

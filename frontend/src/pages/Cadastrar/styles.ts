@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
     width: 80%;
     margin-left: 10%;
-    height: 100vh;
     background-color: #ffffff;
     padding-top: 15vh;
   
@@ -24,6 +23,7 @@ export const Container = styled.div`
 
     .container-buttons {
         width: 100%;
+        padding: 5vh 0vh 5vh 0vh;
         display: flex;
         align-items: center;
         justify-content: flex-end;
@@ -31,6 +31,13 @@ export const Container = styled.div`
 
     .btn-salvar {
         width: 30%;
+    }
+
+    .container-endereco {
+        width: 100%;
+        background-color: #718093;
+        border-radius: 8px;
+        color: #ffffff;
     }
 
 `;

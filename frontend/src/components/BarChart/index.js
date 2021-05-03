@@ -4,27 +4,19 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 const data = [
   {
     name: 'Comercial',
-    uv: 4000,
-    'Quantidade de cadastros': 4100,
-    amt: 2400,
+    'Quantidade de cadastros': 10,
   },
   {
     name: 'Residencial',
-    uv: 3000,
-    'Quantidade de cadastros': 1398,
-    amt: 2210,
+    'Quantidade de cadastros': 22,
   },
   {
     name: 'Rural',
-    uv: 2000,
-    'Quantidade de cadastros': 7200,
-    amt: 2290,
+    'Quantidade de cadastros': 7,
   },
   {
     name: 'Casa de praia',
-    uv: 2000,
-    'Quantidade de cadastros': 6200,
-    amt: 2290,
+    'Quantidade de cadastros': 3,
   }
 ];
 

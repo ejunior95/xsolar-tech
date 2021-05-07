@@ -5,8 +5,7 @@ export const Container = styled.div`
     margin-left: 10%;
     background-color: #ffffff;
     padding-top: 15vh;
-  
-    
+      
     form {
         width: 80%;
         margin-left: 10%;

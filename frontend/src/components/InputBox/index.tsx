@@ -6,6 +6,7 @@ interface IProps {
   type: string;
   required: boolean;
   value?: string;
+  name?: string;
   onChange?: (e:ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -16,12 +17,13 @@ const InputBox = (props:IProps) => {
     type,
     required, 
     value,
+    name,
     onChange
   } = props
   
   return(
       <Container>
-          <Input type={type} required={required} placeholder=" " onChange={onChange} value={value}/>
+          <Input type={type} required={required} placeholder=" " onChange={onChange} value={value} name={name}/>
           <Label>{label}</Label>
           <Span></Span>
       </Container>

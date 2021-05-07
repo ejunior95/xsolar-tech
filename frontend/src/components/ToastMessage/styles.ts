@@ -7,7 +7,7 @@ export const Container = styled.div`
 @media(min-width: 1025px) {
   
   div {
-    position: absolute;
+    position: fixed;
     right: 20px;
     top: 20px;
     display: flex;
@@ -48,7 +48,7 @@ export const Container = styled.div`
 @media(max-width: 1024px) {
 
 div {
-  position: absolute;
+  position: fixed;
   top: 10px;
   display: flex;
   align-items:center;

@@ -34,11 +34,10 @@ const NavBar: React.FC = () => {
         subtitle="Tem certeza que deseja sair do sistema?" 
         >
           <button className="btn-sucesso" onClick={toggleModal}>
-          <VscChromeClose /> Não, quero continuar logado</button> 
+          Quero continuar logado</button> 
           <button 
           className="btn-cancelar" onClick={logoff}>
-           <MdExitToApp />
-            Sim, por favor</button> 
+            Sim, por favor!</button> 
         </ModalMessage> 
         }
 

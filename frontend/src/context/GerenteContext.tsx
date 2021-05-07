@@ -1,7 +1,7 @@
 import { useEffect, useContext } from 'react';
 import {createContext, ReactNode, useState} from 'react';
 import { ToastContext } from './ToastContext';
-import {api} from '../services/api';
+import api from '../services/api';
   
   interface IResponseLogin {
     message: string;
@@ -30,6 +30,7 @@ export function GerenteProvider({
       const token_ = localStorage.getItem('@SistemaXSolarTech/token')
       if (!token_) return 
       setToken(token_)
+      // api.defaults.headers.Authorization = `Bearer ${token_}`
   },[])
 
     // async function recuperarNome(user_id: number) {

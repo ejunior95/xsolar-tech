@@ -30,6 +30,7 @@ export function GerenteProvider({
       const token_ = localStorage.getItem('@SistemaXSolarTech/token')
       if (!token_) return 
       setToken(token_)
+      api.defaults.headers.authorization = `Bearer ${token_}`
       // api.defaults.headers.Authorization = `Bearer ${token_}`
   },[])
 
@@ -43,8 +44,9 @@ export function GerenteProvider({
     async function validarLogin(email:string, senha:string) {
         let res
         try {
-           res = await api.post<IResponseLogin>('auth/login', {email, senha})
-           localStorage.setItem('@SistemaXSolarTech/token', res.data.token)
+          res = await api.post<IResponseLogin>('auth/login', {email, senha})
+          api.defaults.headers.authorization = `Bearer ${res.data.token}`
+          localStorage.setItem('@SistemaXSolarTech/token', res.data.token)
            setToken(res.data.token)
           } catch (error) {
             showToastMessage('erro',"Não foi possível realizar o login!")
@@ -53,6 +55,7 @@ export function GerenteProvider({
       }
       function encerrarSessao() {
         localStorage.removeItem('@SistemaXSolarTech/token')
+        // api.defaults.headers.common['Authorization'] = undefined
         setToken('')
       }
 

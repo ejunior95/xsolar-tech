@@ -15,26 +15,30 @@ const Cadastro: React.FC = () => {
 
   const [camposInvalidos, setcamposInvalidos] = useState([] as string[])
 
-  const [formData, setFormData] = useState({
-    nome: '',
-    cpf: '',
-    telefone: '',
-    email: '',
-    cep: '',
-    cidade: '',
-    estado: '',
-    bairro: '',
-    rua: '',
-    numero: '',
-    complemento: '',
-    tipo: ''
-  })
+  const [formData, setFormData] = useState(() => valorDefaultForm())
 
   function handleChange(e:ChangeEvent<HTMLInputElement>) {
     setFormData({ 
          ...formData, 
          [e.target.name]: e.target.value 
     });
+  }
+
+  function valorDefaultForm() {
+    return {
+      nome: '',
+      cpf: '',
+      telefone: '',
+      email: '',
+      cep: '',
+      cidade: '',
+      estado: '',
+      bairro: '',
+      rua: '',
+      numero: '',
+      complemento: '',
+      tipo: ''
+    }
   }
 
   function validarCampos() {
@@ -74,6 +78,7 @@ const Cadastro: React.FC = () => {
   try {
       await api.post('/clientes', payload)
       showToastMessage('sucesso', 'Cadastro realizado com sucesso!')
+      setFormData(valorDefaultForm())
   } catch (error) {
     console.log(error)
      showToastMessage('alerta', 'Não foi possível realizar o cadastro')

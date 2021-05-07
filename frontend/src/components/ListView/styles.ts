@@ -12,7 +12,6 @@ export const Container = styled.div`
       background-color: #353b48;
       height: 90%;
       width: 95%;
-      
       margin-left: 2.5%;
       margin-top: 2.5%;
       padding-bottom: 2.5%;
@@ -33,6 +32,24 @@ export const Container = styled.div`
   .subtitulos {
     color: #ffffff;
     width: 90%;
+  }
+
+  .icone-excluir {
+    position: absolute;
+    right: 40px;
+    top: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 30px;
+  }
+
+  .icone-editar {
+    position: absolute;
+    right: 90px;
+    top: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 32px;
   }
 
   strong { 

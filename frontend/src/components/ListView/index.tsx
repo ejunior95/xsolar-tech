@@ -44,6 +44,10 @@ function toggleAdminChange() {
   setAdminChange(!adminChange)
 }
 
+function cadastrarAdmin(_id: string) {
+  
+}
+
 const history = useHistory()
 
 useEffect(() => {},[clientes]) 

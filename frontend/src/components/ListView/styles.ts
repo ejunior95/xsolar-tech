@@ -8,6 +8,20 @@ export const Container = styled.div`
   overflow-y: scroll;
   border-radius: 10px;
 
+  ::-webkit-scrollbar-track {
+    background-color: #BABABA;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    background: #BABABA;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #353B48;
+  }
+
   .card-cliente {
       background-color: #353b48;
       height: 90%;

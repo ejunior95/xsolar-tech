@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import * as dotenv from "dotenv";
+import { listMany } from './dtos/client';
 
 dotenv.config();
 
@@ -115,8 +116,8 @@ server.post('/clientes', async (request, response) => {
 server.get('/clientes', async (request, response) => {
     
     const clients = await ClientModel.find({})
-
-    return response.json(clients)
+    const clients_ = listMany(Object.assign(clients))
+    return response.json(clients_)
 })
 
 //Rota de listar apenas um cliente

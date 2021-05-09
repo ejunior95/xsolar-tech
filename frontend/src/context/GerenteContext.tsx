@@ -1,5 +1,4 @@
-import { useEffect, useContext } from 'react';
-import {createContext, ReactNode, useState} from 'react';
+import {useEffect, useContext, createContext, ReactNode, useState} from 'react';
 import { ToastContext } from './ToastContext';
 import api from '../services/api';
   
@@ -7,15 +6,41 @@ import api from '../services/api';
     message: string;
     token: string
   }
+  
+  interface IProviderProps {
+    children : ReactNode
+  }
+
+  interface ICliente {
+    _id: string;
+    nome: string,
+    cpf: string,
+    telefone: string,
+    email: string,
+    enderecoPrincipal: {
+      _id: string;
+      cep: string;
+      cidade: string;
+      estado: string;
+      bairro: string;
+      rua: string;
+      numero: string;
+      complemento: string;
+      tipo: string;
+    }
+    isAdmin: boolean
+  }
 
   interface IContextData {
     validarLogin: (email:string, senha:string) => void;
     isLogado: boolean;
+    clientes: ICliente[];
+    setClientes: (clientes: ICliente[]) => void;
+    listarClientes: () => void;
+    excluirCliente: (_id: string) => void;
+    modal: boolean;
+    toggleModal: () => void;
     encerrarSessao: () => void
-  }
-  
-  interface IProviderProps {
-    children : ReactNode
   }
 
 export const GerenteContext = createContext({} as IContextData);
@@ -23,8 +48,11 @@ export const GerenteContext = createContext({} as IContextData);
 export function GerenteProvider({
     children
   }: IProviderProps) {
-  const [token, setToken] = useState('')
+
+  const [token, setToken] = useState('');
+  const [clientes, setClientes] = useState([] as ICliente[]);
   const { showToastMessage } = useContext(ToastContext);
+  const [modal, setModal] = useState(false)
 
   useEffect(() => {
       const token_ = localStorage.getItem('@SistemaXSolarTech/token')
@@ -34,13 +62,19 @@ export function GerenteProvider({
       // api.defaults.headers.Authorization = `Bearer ${token_}`
   },[])
 
-    // async function recuperarNome(user_id: number) {
-    //     let res
-    //     res = await api.get<IUser[]>('users')
-    //     const nomeEncontrado =  res.data.filter(user => user.id === user_id)
-    //     return nomeEncontrado[0]?.name
-    // }
+  async function listarClientes() {
+    try {
+     const res = await api.get('/clientes')
+     setClientes(res.data)
+   
+      } catch (error) {
+      console.log(error)
+  }}
 
+  function toggleModal() {
+    setModal(!modal)
+  }
+  
     async function validarLogin(email:string, senha:string) {
         let res
         try {
@@ -59,10 +93,29 @@ export function GerenteProvider({
         setToken('')
       }
 
+      async function excluirCliente(_id:string) {    
+   
+        try {
+         await api.delete(`/clientes/${_id}`)
+        const clientes_ = clientes.filter(cliente => cliente._id !== _id)
+        setClientes(clientes_)
+        showToastMessage('sucesso',"Cliente excluído com sucesso!")
+        toggleModal()
+        } catch (error) {
+        showToastMessage('erro',"Não foi possível excluir o cliente")
+        }
+      }
+
   return (
       <GerenteContext.Provider value={{
           validarLogin,
           isLogado : !!token,
+          clientes,
+          setClientes,
+          excluirCliente,
+          listarClientes,
+          toggleModal,
+          modal,
           encerrarSessao
       }}> 
       {children}

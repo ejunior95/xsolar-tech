@@ -33,10 +33,10 @@ const NavBar: React.FC = () => {
         title="Atenção!" 
         subtitle="Tem certeza que deseja sair do sistema?" 
         >
-          <button className="btn-sucesso" onClick={toggleModal}>
+          <button className="btn-cancelar" onClick={toggleModal}>
           Quero continuar logado</button> 
           <button 
-          className="btn-cancelar" onClick={logoff}>
+          className="btn-sucesso" onClick={logoff}>
             Sim, por favor!</button> 
         </ModalMessage> 
         }

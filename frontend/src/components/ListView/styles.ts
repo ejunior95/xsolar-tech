@@ -34,22 +34,44 @@ export const Container = styled.div`
     width: 90%;
   }
 
-  .icone-excluir {
+  .icone-editar,
+  .icone-excluir,
+  .icone-gerente {
     position: absolute;
-    right: 40px;
-    top: 25px;
-    color: #ffffff;
     cursor: pointer;
     font-size: 30px;
   }
 
+  .icone-editar:hover:before {
+      content: '';
+      width: 40px;
+      height: 40px;
+      background-color: blue;
+  }
+
+  .icone-excluir {
+    color: #ffffff;
+    right: 40px;
+    top: 25px;
+  }
+
   .icone-editar {
-    position: absolute;
+    color: #ffffff;
     right: 90px;
     top: 25px;
+  }
+
+  .icone-gerente.active {
     color: #ffffff;
-    cursor: pointer;
-    font-size: 32px;
+    right: 140px;
+    top: 25px;
+  }
+
+  .icone-gerente.inactive {
+    
+    color: #262A33;
+    right: 140px;
+    top: 25px;
   }
 
   strong { 

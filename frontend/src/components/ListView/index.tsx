@@ -1,15 +1,15 @@
+import { useState, useEffect, useContext } from 'react';
 import { Container } from './styles';
 import { FaTrashAlt } from "react-icons/fa";
-import { useState } from 'react';
-import ModalMessage from '../ModalMessage';
-import api from '../../services/api';
-import { useEffect } from 'react';
-import { useContext } from 'react';
-import { ToastContext } from '../../context/ToastContext';
 import { RiPencilFill } from "react-icons/ri";
+import { ImKey } from 'react-icons/im';
+import ModalMessage from '../ModalMessage';
+import { GerenteContext } from '../../context/GerenteContext';
+import { useHistory } from 'react-router-dom';
+import InputBox from '../InputBox';
 
 
-interface IProps {
+interface IClienteProps {
   clientes: ICliente[];
   setClientes: (clientes: ICliente[]) => void;
 }
@@ -31,42 +31,23 @@ interface ICliente {
     complemento: string;
     tipo: string;
   }
+  isAdmin: boolean
 }
 
-const ListView = (props:IProps) => {
+const ListView = (props:IClienteProps) => {
  
-  const { showToastMessage } = useContext(ToastContext);
-
-const {
-  clientes,
-  setClientes
-} = props
-
-const [modal, setModal] = useState(false)
+const { clientes, excluirCliente, toggleModal, modal } = useContext(GerenteContext)
 const [idSelect, setIdSelect] = useState('')
+const [adminChange,setAdminChange] = useState(false)
 
-useEffect(() => {
+function toggleAdminChange() {
+  setAdminChange(!adminChange)
+}
 
-},[clientes])
+const history = useHistory()
 
+useEffect(() => {},[clientes]) 
 
-  function toggleModal() {
-    setModal(!modal)
-  }
-  async function excluirCliente(_id:string) {    
-   
-    try {
-     await api.delete(`/clientes/${_id}`)
-    const clientes_ = clientes.filter(cliente => cliente._id !== _id)
-    setClientes(clientes_)
-    showToastMessage('sucesso',"Cliente excluído com sucesso!")
-    toggleModal()
-    } catch (error) {
-    showToastMessage('erro',"Não foi possível excluir o cliente")
-    }
-  }
- 
- 
   return(
     <>   
     {modal && 
@@ -74,18 +55,31 @@ useEffect(() => {
     title="Atenção!" 
     subtitle="Você irá EXCLUIR PERMANENTEMENTE esse cliente! Tem certeza que deseja continuar?" 
     >
-      <button className="btn-sucesso" onClick={toggleModal}>
+      <button className="btn-cancelar" onClick={toggleModal}>
       Não, mudei de ideia</button> 
       <button 
-      className="btn-cancelar" onClick={() => excluirCliente(idSelect)}>
+      className="btn-sucesso" onClick={() => excluirCliente(idSelect)}>
         Sim, pode exluir!</button> 
     </ModalMessage> 
     }
 
-      <Container>
+    {adminChange && 
+    <ModalMessage 
+    title="Atenção!" 
+    subtitle="Você irá conceder acesso de administrador para o usuário!" 
+    component={<InputBox label="Digite uma senha para o usuário" type="password" required />}
+    >
+      <button className="btn-cancelar" onClick={toggleAdminChange}>
+      Não, mudei de ideia</button> 
+      <button 
+      className="btn-sucesso" onClick={toggleAdminChange}>
+        Liberar acesso!</button> 
+    </ModalMessage> 
+    }
 
+      <Container>
           {clientes.map(cliente => 
-          
+
           (<div className="card-cliente">
 
             <h1 className="titulos">{cliente.nome}</h1>
@@ -107,7 +101,22 @@ useEffect(() => {
               toggleModal()
             }} />
 
-            <RiPencilFill className="icone-editar" title="Editar cliente"/>
+            <RiPencilFill className="icone-editar" title="Editar cliente" onClick={() => {
+              setIdSelect(cliente._id)
+              history.push({
+                pathname: '/cadastrar-cliente',
+                state: { cliente }
+              })
+            }}/>
+
+            <ImKey 
+            className={cliente.isAdmin ? 'icone-gerente active' : 'icone-gerente inactive'} 
+            title={cliente.isAdmin ? 'Acesso de administrador ativado' : 'Acesso de administrador desativado'} 
+            onClick={() => {
+              setIdSelect(cliente._id)
+              toggleAdminChange()
+            }}
+            />
 
           </div>)
           

@@ -4,6 +4,7 @@ import { Container } from './styles';
 interface IProps {
     title: string;
     subtitle: string;
+    component?: React.ReactNode;
     children?: React.ReactNode;
 }
 
@@ -12,6 +13,7 @@ const ModalMessage = (props:IProps) => {
     const {
         title,
         subtitle,
+        component,
         children
     } = props
 
@@ -22,6 +24,7 @@ const ModalMessage = (props:IProps) => {
               <div className="container-textos">
                 <h1>{title}</h1>
                 <p>{subtitle}</p>
+                {component}
               </div>
               <div className="container-botoes">
                   {children}

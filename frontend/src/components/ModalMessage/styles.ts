@@ -14,27 +14,34 @@ export const Container = styled.div`
 
   .container-modal {
       width: 50%;
-      height: 40vh;
+      height: 50vh;
       background-color: #ffffff;
       z-index: 10000;
-      border-radius: 20px;
+      border-radius: 10px;
       transition: .2s ease-in-out;
   }
 
   .container-textos {
-      width: 90%;
+      width: 95%;
       height: 75%;
-      margin-left: 5%;
-      padding-top: 5vh;
+      margin-left: 2.5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
   }
 
   h1 {
+      width: 100%;
+      text-align: left;
       font-size: 250%;
   }
 
   p {
-      margin-top: 2vh;
-      font-size: 150%;
+    width: 100%;
+      text-align: left;
+      font-size: 135%;
+      margin-bottom: 10%;
   }
 
   .container-botoes {

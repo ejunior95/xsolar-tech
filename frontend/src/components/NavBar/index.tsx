@@ -4,14 +4,10 @@ import LogoXSolar from '../../assets/Logo_XSolar.png';
 import { GerenteContext } from '../../context/GerenteContext';
 import ModalMessage from '../ModalMessage';
 import { Link, useLocation } from 'react-router-dom';
-import { VscChromeClose } from "react-icons/vsc";
-import { MdExitToApp } from 'react-icons/md'
 
 const NavBar: React.FC = () => {
   
-    const {
-      encerrarSessao
-    } = useContext(GerenteContext)
+    const { encerrarSessao } = useContext(GerenteContext)
 
   const [modal, setModal] = useState(false)
 
@@ -37,7 +33,7 @@ const NavBar: React.FC = () => {
           Quero continuar logado</button> 
           <button 
           className="btn-sucesso" onClick={logoff}>
-            Sim, por favor!</button> 
+          Sim, por favor!</button> 
         </ModalMessage> 
         }
 

@@ -43,6 +43,11 @@ import api from '../services/api';
     encerrarSessao: () => void
   }
 
+  interface IsAdmin {
+    _id: string;
+    isAdmin: boolean;
+  }
+
 export const GerenteContext = createContext({} as IContextData);
 
 export function GerenteProvider({
@@ -51,6 +56,7 @@ export function GerenteProvider({
 
   const [token, setToken] = useState('');
   const [clientes, setClientes] = useState([] as ICliente[]);
+  const [isAdmin, setIsAdmin] = useState({} as IsAdmin)
   const { showToastMessage } = useContext(ToastContext);
   const [modal, setModal] = useState(false)
 
@@ -66,7 +72,6 @@ export function GerenteProvider({
     try {
      const res = await api.get('/clientes')
      setClientes(res.data)
-   
       } catch (error) {
       console.log(error)
   }}
@@ -87,6 +92,7 @@ export function GerenteProvider({
             return 
           }
       }
+
       function encerrarSessao() {
         localStorage.removeItem('@SistemaXSolarTech/token')
         // api.defaults.headers.common['Authorization'] = undefined

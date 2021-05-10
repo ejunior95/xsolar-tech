@@ -7,6 +7,8 @@ import ModalMessage from '../ModalMessage';
 import { GerenteContext } from '../../context/GerenteContext';
 import { useHistory } from 'react-router-dom';
 import InputBox from '../InputBox';
+import api from '../../services/api';
+import { ToastContext } from '../../context/ToastContext';
 
 
 interface IClienteProps {
@@ -34,23 +36,55 @@ interface ICliente {
   isAdmin: boolean
 }
 
+
 const ListView = (props:IClienteProps) => {
- 
-const { clientes, excluirCliente, toggleModal, modal } = useContext(GerenteContext)
+const history = useHistory()
+  
+const { clientes, listarClientes, excluirCliente, toggleModal, modal } = useContext(GerenteContext)
+const { showToastMessage } = useContext(ToastContext)
+
 const [idSelect, setIdSelect] = useState('')
 const [adminChange,setAdminChange] = useState(false)
+const [email, setEmail] = useState({})
+const [operacaoAdmin, setOperacaoAdmin] = useState('')
+const [novaSenhaAdmin, setNovaSenhaAdmin] = useState('')
 
 function toggleAdminChange() {
   setAdminChange(!adminChange)
 }
 
-function cadastrarAdmin(_id: string) {
-  
+async function cadastrarAdmin() {
+  const payload = {
+    email: email,
+    senha: novaSenhaAdmin
+  }
+  try {
+    await api.post('/auth/register', payload)
+    listarClientes()
+    setEmail('')
+    setNovaSenhaAdmin('')
+    setOperacaoAdmin('')
+    showToastMessage('sucesso',"Acesso do usuário alterado com sucesso!")
+  } catch (error) {
+    showToastMessage('erro',"Não foi possível alterar o acesso!")
+  }
 }
-
-const history = useHistory()
-
-useEffect(() => {},[clientes]) 
+async function revogarAdmin() {
+  const payload = {
+    email
+  }
+  
+  try {
+    await api.post('/auth/remove', payload)
+    listarClientes()
+    setEmail('')
+    setNovaSenhaAdmin('')
+    setOperacaoAdmin('')
+    showToastMessage('sucesso',"Acesso do usuário alterado com sucesso!")
+  } catch (error) {
+    showToastMessage('erro',"Não foi possível alterar o acesso!")
+  }
+}
 
   return(
     <>   
@@ -67,19 +101,34 @@ useEffect(() => {},[clientes])
     </ModalMessage> 
     }
 
-    {adminChange && 
-    <ModalMessage 
-    title="Atenção!" 
-    subtitle="Você irá conceder acesso de administrador para o usuário!" 
-    component={<InputBox label="Digite uma senha para o usuário" type="password" required />}
-    >
-      <button className="btn-cancelar" onClick={toggleAdminChange}>
-      Não, mudei de ideia</button> 
-      <button 
-      className="btn-sucesso" onClick={toggleAdminChange}>
-        Liberar acesso!</button> 
-    </ModalMessage> 
-    }
+    {operacaoAdmin === 'revogarAcesso' &&
+      (<ModalMessage 
+      title="Atenção!" 
+      subtitle="Tem certeza que deseja remover o acesso de administrador desse usuário?" 
+      >
+        <button className="btn-cancelar" onClick={() => setOperacaoAdmin('')}>
+        Não, mudei de ideia</button> 
+        <button 
+        className="btn-sucesso" onClick={() => {
+        revogarAdmin()
+        setOperacaoAdmin('')}}>
+        Sim, revogar acesso!</button> 
+      </ModalMessage>) 
+      }
+      {operacaoAdmin === 'liberarAcesso' && 
+      (<ModalMessage 
+        title="Atenção!" 
+        subtitle="Você irá conceder acesso de administrador para o usuário!" 
+        component={<InputBox label="Digite uma senha para o usuário" type="password" value={novaSenhaAdmin} onChange={(e) => setNovaSenhaAdmin(e.target.value)} required />}
+        >
+          <button className="btn-cancelar" onClick={() => setOperacaoAdmin('')}>
+          Não, mudei de ideia</button> 
+          <button 
+          className="btn-sucesso" onClick={() => {
+            cadastrarAdmin()
+            setOperacaoAdmin('')}}>
+          Sim, liberar acesso!</button> 
+        </ModalMessage>)}
 
       <Container>
           {clientes.map(cliente => 
@@ -117,7 +166,12 @@ useEffect(() => {},[clientes])
             className={cliente.isAdmin ? 'icone-gerente active' : 'icone-gerente inactive'} 
             title={cliente.isAdmin ? 'Acesso de administrador ativado' : 'Acesso de administrador desativado'} 
             onClick={() => {
-              setIdSelect(cliente._id)
+              if(cliente.isAdmin) {
+                setOperacaoAdmin('revogarAcesso')
+              } else {
+                setOperacaoAdmin('liberarAcesso')
+              }
+              setEmail(cliente.email)
               toggleAdminChange()
             }}
             />

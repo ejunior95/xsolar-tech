@@ -1,7 +1,7 @@
 export function list(cliente:any) {
     let cliente_ = cliente.toJSON()
     delete cliente_.senha
-    return {...cliente_, isAdmin: cliente.senha !== undefined}
+    return {...cliente_, isAdmin: !!cliente.senha}
 }
 
 export function listMany(clientes=[]) {

@@ -6,7 +6,7 @@ export const Container = styled.div`
   background-color: #dcdde1;
   overflow: hidden;
   overflow-y: scroll;
-  border-radius: 10px;
+  border-radius: 20px;
 
   ::-webkit-scrollbar-track {
     background-color: #BABABA;
@@ -20,6 +20,7 @@ export const Container = styled.div`
   ::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background: #353B48;
+    
   }
 
   .card-cliente {
@@ -29,7 +30,7 @@ export const Container = styled.div`
       margin-left: 2.5%;
       margin-top: 2.5%;
       padding-bottom: 2.5%;
-      border-radius: 10px;
+      border-radius: 20px;
       position: relative;
       display: flex;
       flex-direction: column;

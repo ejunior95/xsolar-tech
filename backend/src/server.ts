@@ -62,6 +62,8 @@ server.post('/auth/login', async (request, response) => {
 })
 
 server.use(authGerente)
+
+// Rota para cadastro de gerente
 server.post('/auth/register', async (request, response) => {
     const {
         email,
@@ -73,12 +75,34 @@ server.post('/auth/register', async (request, response) => {
         return response.status(404).json({message: "Usuário não encontrado!"})
     }
 
+    if (!senha) {
+        return response.status(404).json({message: "Senha não informada!"})
+    }
+
     const hash = await bcrypt.hash(senha, 7);
     
     client.senha = hash
 
     await client.save()
     return response.status(201).json({})
+
+})
+
+// Rota para excluir gerente
+server.post('/auth/remove', async (request, response) => {
+    const {
+        email
+    } = request.body
+
+    const client = await ClientModel.findOne({email})
+    if (!client) {
+        return response.status(404).json({message: "Usuário não encontrado!"})
+    }
+    
+    client.senha = null
+
+    await client.save()
+    return response.status(204).json({})
 
 })
 

@@ -7,6 +7,7 @@ import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import * as dotenv from "dotenv";
 import { listMany } from './dtos/client';
+import { enviarEmail } from './services/mail';
 
 dotenv.config();
 
@@ -130,6 +131,10 @@ server.post('/clientes', async (request, response) => {
         enderecosSecundarios
     })
    const clientCreated = await client.save()
+   
+   enviarEmail({
+    to: `${client.nome}, ${client.email}`
+   })
 
     return response.status(201).json(clientCreated)
 

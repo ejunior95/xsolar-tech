@@ -125,7 +125,7 @@ const Cadastro: React.FC = () => {
 
   try {
       await api.post('/clientes', payload)
-      showToastMessage('sucesso', 'Cadastro realizado com sucesso!')
+      showToastMessage('sucesso', 'Cadastro realizado com sucesso e email enviado!')
       setFormData(valorDefaultForm())
       window.scrollTo(0,0)
       setIdUsuario('')

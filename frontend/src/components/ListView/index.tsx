@@ -125,8 +125,11 @@ async function revogarAdmin() {
           Não, mudei de ideia</button> 
           <button 
           className="btn-sucesso" onClick={() => {
-            cadastrarAdmin()
-            setOperacaoAdmin('')}}>
+            if(novaSenhaAdmin) {
+              cadastrarAdmin()
+              setOperacaoAdmin('')}}
+            }
+            >
           Sim, liberar acesso!</button> 
         </ModalMessage>)}
 

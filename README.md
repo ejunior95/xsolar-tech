@@ -53,13 +53,17 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 # Clone este repositório
 $ git clone git@github.com:ejunior95/xsolar-tech.git
 
-# Acesse a pasta do projeto no seu terminal/cmd
-$ cd xsolar-tech
+# Acesse a pasta do frontend do projeto no seu terminal/cmd e instale as dependências
+$ cd xsolar-tech/frontend
+$ yarn
 
-# Instale as dependências
+# Acesse a pasta do backend do projeto no seu terminal/cmd e instale as dependências
+$ cd ..
+$ cd xsolar-tech/backend
 $ yarn
 
 # Execute a aplicação em modo de desenvolvimento
+$ cd ..
 $ yarn dev:all
 
 # A aplicação backend será aberta na porta: 3333 - acesse http://localhost:3333

@@ -83,5 +83,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 -   **[React Icons](https://react-icons.github.io/react-icons/)**
 -   **[Axios](https://github.com/axios/axios)**
 -   **[Express](https://expressjs.com/pt-br/)**
+-   **[Docker](https://www.docker.com/)**
+-   **[MongoDB](https://www.mongodb.com/)**
 -   **[Styled-components](https://styled-components.com/)**
 

@@ -16,17 +16,15 @@
 
 ## 💻 Sobre o projeto<p id="-sobre-o-projeto"></p>
 
-No dia 25/03/2021, me foi passado pelo time de recrutamento da Stone (uma das empresas que mais admiro, atualmente) um desafio para desenvolver uma aplicação Front-end em React TS, foi muito dificil mas consegui realizar o que foi solicitado, e o resultado se encontra nesse repositório!
-
-A aplicação foi publicada via o serviço da Heroku e pode ser visualizado <a href="http://cred-rock-front.herokuapp.com/home">neste link</a>.
+No dia 16/04/2021, fui desafiado pelo time de recrutamento da Nibble para desenvolver uma aplicação com backend em Express e frontend em React TS, foi muito dificil mas consegui realizar o que foi solicitado, e o resultado se encontra nesse repositório!
 
 ---
 
 ## ⚙️ Funcionalidades<p id="-funcionalidades"></p>
 
-- O sistema auxilia os analistas para aprovar ou rejeitar pedidos de cartões.
-- É possivel visualizar a base de usuários cadastrados.
-- Consultar os pedidos de cartões.
+- O sistema tem uma validação de login feita pelo backend via JWT (Json Web Token)
+- É possível cadastrar novos clientes, alterar os cadastros, excluir e listar.
+- Também é possível configurar o acesso de administrador em outros usuários.
 
 ---
 
@@ -48,7 +46,7 @@ Além disto é bom ter um editor para trabalhar com o código como [VSCode](http
 
 ## ⚙ Como executar<p id="-como-executar-o-projeto"></p>
 
-#### 🧭 Rodando a aplicação web (Frontend)
+#### 🧭 Rodando a aplicação (Backend e Frontend)
 
 ```bash
 

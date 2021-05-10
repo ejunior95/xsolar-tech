@@ -4,15 +4,27 @@ import LogoXSolar from '../../assets/Logo_XSolar.png';
 import { GerenteContext } from '../../context/GerenteContext';
 import ModalMessage from '../ModalMessage';
 import { Link, useLocation } from 'react-router-dom';
+import { ImMenu } from "react-icons/im";
+
 
 const NavBar: React.FC = () => {
   
     const { encerrarSessao } = useContext(GerenteContext)
 
   const [modal, setModal] = useState(false)
+  const [menuMobile, setMenuMobile] = useState('expandido')
 
     function toggleModal() {
       setModal(!modal)
+    }
+
+    function toggleMenuMobile() {
+      if(menuMobile === 'expandido') {
+        setMenuMobile('retraido')
+      }
+      if(menuMobile === 'retraido') {
+        setMenuMobile('expandido')
+      }
     }
 
     function logoff() {
@@ -40,6 +52,7 @@ const NavBar: React.FC = () => {
       <Container>
       <Link to="/home"><img src={LogoXSolar} alt="Logo Xsolar Tech" title="A melhor solução em energia solar" /></Link>
           <div className="container-itens-menu">
+            
             <ul>
               {location.pathname === '/home' ? 
               (<li className="active"><Link to="/home">Página Inicial</Link></li>) 
@@ -57,7 +70,12 @@ const NavBar: React.FC = () => {
               (<li><Link to="/listar">Listar todos os cadastros</Link></li>)
               }
                 <li onClick={toggleModal}>Encerrar sessão</li>
-            </ul>   
+            </ul>  
+            
+            <div className="container-menu-mobile">
+              <ImMenu className="icone-menu-mobile"/>
+            </div>
+
           </div>
       </Container>
 </>
